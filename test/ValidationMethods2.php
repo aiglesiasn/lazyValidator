@@ -1,5 +1,5 @@
 <?php
-namespace Trzczy\Helpers;
+namespace Trzczy\Helpers\Test;
 
 class ValidationMethods2
 {

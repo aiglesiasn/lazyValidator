@@ -13,7 +13,8 @@
       "Trzczy\\Helpers\\": [
         "src/",
         "test/"
-      ]
+      ],
+      "Trzczy\\Helpers\\Test\\": "test/"
     }
   },
   "license": "MIT",

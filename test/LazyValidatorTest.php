@@ -1,4 +1,6 @@
 <?php
+namespace Trzczy\Helpers\Test;
+
 require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
 use PHPUnit\Framework\TestCase;
 use Trzczy\Helpers\LazyValidator;
@@ -343,20 +345,20 @@ class LazyValidatorTest extends TestCase
      */
     public function testIfValidatorReportIsAsExcepted($postData, $rulesGrouped, $validationMethodsClassName, $expected)
     {
-        $fullValidationMethodsClassName = 'Trzczy\\Helpers\\' . $validationMethodsClassName;
+        $fullValidationMethodsClassName = 'Trzczy\\Helpers\\Test\\' . $validationMethodsClassName;
         $validationMethodsObject = new $fullValidationMethodsClassName($this->userDaoImpl);
-        var_dump($validationMethodsObject);
         $this->validator = new LazyValidator($validationMethodsObject);
         $result = $this->validator->validate(
             json_decode($postData, true),
             $rulesGrouped
         );
         unset($this->validator);
+        /** @noinspection PhpUndefinedMethodInspection */
         $this->assertEquals($result, json_decode($expected, true));
     }
 
     public function setUp()
     {
-        $this->userDaoImpl = new \Trzczy\Helpers\UserDaoImpl();
+        $this->userDaoImpl = new UserDaoImpl();
     }
 }
